@@ -21,18 +21,18 @@
 	<body>
 		<!-- header with site name in the left hand corner and search in compressed position -->
 		<header
-			class="p-4 pt-40 border-b-4 border-gray-700 flex flex-col items-center bg-gray-100"
+			class="p-4 pt-40 border-b-4 border-gray-700 flex flex-col items-center bg-gray-200"
 		>
-			<h1 class="pt-12 font-bold text-5xl">
+			<h1 class="pt-12 font-semibold text-5xl">
 				<span class="text-red-600">COV</span>acation
 			</h1>
-			<p class="pt-3 text-xl text-gray-700">Catch a flight, not the 'rona!</p>
+			<p class="pt-3 text-xl text-gray-700">Travel Smarter.</p>
 			<!-- form that holds all user search filters -->
 			<form class="py-4 flex flex-col items-center">
 				<!-- inputs that capture the departure and arrival locations -->
-				<div class="m-1 flex rounded-md shadow-md">
+				<div class="m-1 flex rounded-xl shadow-md w-8/12">
 					<span
-						class="p-2 inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+						class="p-4 inline-flex items-center px-3 rounded-l-xl border border-r-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
 						><i class="fas fa-plane-departure"></i
 					></span>
 					<input
@@ -40,28 +40,28 @@
 						id="depart-from"
 						type="text"
 						placeholder="Where from?"
-						class="pl-2 border border-gray-400 rounded-r-md"
+						class="pl-2 border border-gray-400 rounded-r-xl w-10/12"
 					/>
 				</div>
 				<i class="fas fa-virus"></i>
-				<div class="m-1 flex rounded-md shadow-md">
+				<div class="m-1 flex rounded-xl shadow-md w-8/12">
 					<input
 						name="arrive-to"
 						id="arrive-to"
 						type="text"
 						placeholder="Where to?"
-						class="pl-2 border border-gray-400 rounded-l-md"
+						class="pl-2 border border-gray-400 rounded-l-xl w-10/12"
 					/>
 					<span
-						class="p-2 inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+						class="p-4 inline-flex items-center px-3 rounded-r-xl border border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
 						><i class="fas fa-plane-arrival"></i
 					></span>
 				</div>
 				<!-- inputs that capture the travel dates -->
-				<div class="pt-3 flex flex-row w-10/12">
+				<div class="m-3 rounded-xl flex flex-row w-10/12 shadow-md">
 					<div class="flex flex-col w-6/12">
 						<span
-							class="p-0 inline-flex items-center px-3 rounded-tl-md border border-b-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+							class="p-1 inline-flex items-center px-2 rounded-tl-xl border border-b-0 border-gray-400 bg-red-200 text-gray-700 text-md"
 							>Depart</span
 						>
 						<input
@@ -69,12 +69,12 @@
 							id="depart-date"
 							type="text"
 							placeholder="Sun, Apr 18"
-							class="pl-2 border border-gray-400 rounded-bl-md"
+							class="p-2 border border-gray-400 rounded-bl-xl"
 						/>
 					</div>
 					<div class="flex flex-col w-6/12">
 						<span
-							class="p-0 inline-flex items-center px-3 rounded-tr-md border border-b-0 border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+							class="p-1 inline-flex items-center px-2 rounded-tr-xl border border-b-0 border-l-0 border-gray-400 bg-red-200 text-gray-700 text-md"
 							>Return</span
 						>
 						<input
@@ -82,26 +82,75 @@
 							id="return-date"
 							type="text"
 							placeholder="Wed, Apr 21"
-							class="pl-2 border border-gray-400 border-l-0 rounded-br-md"
+							class="p-2 border border-gray-400 border-l-0 rounded-br-xl"
 						/>
 					</div>
 				</div>
-				<input type="submit" />
+				<input
+					type="submit"
+					id="search-submit"
+					class="px-3 py-2 mt-4 rounded-lg text-white shadow-md bg-red-600 hover:bg-red-700 cursor-pointer"
+				/>
 			</form>
 		</header>
-		<main>
+		<main class="flex flex-col items-center">
 			<!-- div that holds the previous searches -->
-			<section class="p-4 flex flex-col items-center">
-				<h2 class="mb-4 text-2xl font-semibold">Previous Searches:</h2>
+			<section class="p-4 flex flex-col items-center w-10/12">
+				<h2 class="mb-4 text-2xl font-semibold">Your Previous Searches:</h2>
 				<!-- there are placeholder previous searches that are hardcoded - to be replaced by dynamic data -->
-				<div class="p-4 my-2 border-2 border-gray-700">
-					<h3>Previous Search 1</h3>
-				</div>
-				<div class="p-4 my-2 border-2 border-gray-700">
-					<h3>Previous Search 2</h3>
-				</div>
-				<div class="p-4 my-2 border-2 border-gray-700">
-					<h3>Previous Search 3</h3>
+				<!-- we'll need to add event listeners on these divs to repeat the search -->
+				<div class="flex flex-row flex-wrap">
+					<div
+						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer"
+					>
+						<h3 class="py-2 text-lg text-center">
+							Toronto <i class="fas fa-arrow-right"></i> Vancouver
+						</h3>
+						<div
+							class="py-2 flex flex-row items-center rounded-b-xl text-center bg-white w-full"
+						>
+							<div class="w-6/12 border-r border-gray-400">
+								<p>Sun, Apr 18</p>
+							</div>
+							<div class="w-6/12">
+								<p>Wed, Apr 21</p>
+							</div>
+						</div>
+					</div>
+					<div
+						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer"
+					>
+						<h3 class="py-2 text-lg text-center">
+							Toronto <i class="fas fa-arrow-right"></i> Vancouver
+						</h3>
+						<div
+							class="py-2 flex flex-row items-center rounded-b-xl text-center bg-white w-full"
+						>
+							<div class="w-6/12 border-r border-gray-400">
+								<p>Sun, Apr 18</p>
+							</div>
+							<div class="w-6/12">
+								<p>Wed, Apr 21</p>
+							</div>
+						</div>
+					</div>
+					<div
+						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer"
+					>
+						<h3 class="py-2 text-lg text-center">
+							Toronto <i class="fas fa-arrow-right"></i> Vancouver
+						</h3>
+						<div
+							class="py-2 flex flex-row items-center rounded-b-xl text-center bg-white w-full"
+						>
+							<div class="w-6/12 border-r border-gray-400">
+								<p>Sun, Apr 18</p>
+							</div>
+							<div class="w-6/12">
+								<p>Wed, Apr 21</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 		</main>
