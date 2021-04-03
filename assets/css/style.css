@@ -1,0 +1,11 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+/* card shadow styles */
+
+.shadow-md {
+	/* box model */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.14);
+}

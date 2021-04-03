@@ -1,6 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>COVacation - Plan a Safe Trip!</title>
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+			integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="assets/css/style.css" />
+	</head>
+	<body>
+		<!-- header with site name in the left hand corner and search in compressed position -->
+		<header
+			class="p-4 pt-40 border-b-4 border-gray-700 flex flex-col items-center bg-gray-100"
+		>
+			<h1 class="pt-12 font-bold text-5xl">
+				<span class="text-red-600">COV</span>acation
+			</h1>
+			<p class="pt-3 text-xl text-gray-700">Catch a flight, not the 'rona!</p>
+			<!-- form that holds all user search filters -->
+			<form class="py-4 flex flex-col items-center">
+				<!-- inputs that capture the departure and arrival locations -->
+				<div class="m-1 flex rounded-md shadow-md">
+					<span
+						class="p-2 inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+						><i class="fas fa-plane-departure"></i
+					></span>
+					<input
+						name="depart-from"
+						id="depart-from"
+						type="text"
+						placeholder="Where from?"
+						class="pl-2 border border-gray-400 rounded-r-md"
+					/>
+				</div>
+				<i class="fas fa-virus"></i>
+				<div class="m-1 flex rounded-md shadow-md">
+					<input
+						name="arrive-to"
+						id="arrive-to"
+						type="text"
+						placeholder="Where to?"
+						class="pl-2 border border-gray-400 rounded-l-md"
+					/>
+					<span
+						class="p-2 inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+						><i class="fas fa-plane-arrival"></i
+					></span>
+				</div>
+				<!-- inputs that capture the travel dates -->
+				<div class="pt-3 flex flex-row w-10/12">
+					<div class="flex flex-col w-6/12">
+						<span
+							class="p-0 inline-flex items-center px-3 rounded-tl-md border border-b-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+							>Depart</span
+						>
+						<input
+							name="depart-date"
+							id="depart-date"
+							type="text"
+							placeholder="Sun, Apr 18"
+							class="pl-2 border border-gray-400 rounded-bl-md"
+						/>
+					</div>
+					<div class="flex flex-col w-6/12">
+						<span
+							class="p-0 inline-flex items-center px-3 rounded-tr-md border border-b-0 border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm"
+							>Return</span
+						>
+						<input
+							name="return-date"
+							id="return-date"
+							type="text"
+							placeholder="Wed, Apr 21"
+							class="pl-2 border border-gray-400 border-l-0 rounded-br-md"
+						/>
+					</div>
+				</div>
+				<input type="submit" />
+			</form>
+		</header>
+		<main>
+			<!-- div that holds the previous searches -->
+			<section class="p-4 flex flex-col items-center">
+				<h2 class="mb-4 text-2xl font-semibold">Previous Searches:</h2>
+				<!-- there are placeholder previous searches that are hardcoded - to be replaced by dynamic data -->
+				<div class="p-4 my-2 border-2 border-gray-700">
+					<h3>Previous Search 1</h3>
+				</div>
+				<div class="p-4 my-2 border-2 border-gray-700">
+					<h3>Previous Search 2</h3>
+				</div>
+				<div class="p-4 my-2 border-2 border-gray-700">
+					<h3>Previous Search 3</h3>
+				</div>
+			</section>
+		</main>
+		<!-- load libraries and js code -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
+		<script src="assets/js/front-end.js"></script>
+		<script src="assets/js/script.js"></script>
+	</body>
 </html>
-<head>
-    <title>Group-project</title>
-</head>
