@@ -116,3 +116,15 @@ function showCovidInfo(countryName) {
 
 }
 
+// using opencage geocoding api.  https://opencagedata.com/api#request
+// fix covid api function to use this before fetch request
+// use this function to call covid and weather api's
+function placeLookup(cityName) {
+	fetch(`https://api.opencagedata.com/geocode/v1/json?key=bf9cc7921eff4de78bd861e487142a0a&pretty=1&q=${cityName}`)
+	.then(response => {
+		response.json().then(data => {
+			console.log(`${cityName}		${data.results[0].components.country}		${data.results[0].components['ISO_3166-1_alpha-2']}`);
+		})
+	})
+}
+
