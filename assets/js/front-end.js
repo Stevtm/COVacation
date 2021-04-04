@@ -52,9 +52,16 @@ var shrinkHeader = function () {
 	$("header").removeClass("p-4 pt-40").addClass("p-2");
 
 	// slightly reduce the size of the form elements
+	// form itself
+	$("form").removeClass("py-4").addClass("py-2");
+	// icon
 	$("form").find("span.p-4").removeClass("p-4").addClass("p-3");
+	// date input
 	$("form").find("input.p-2").removeClass("p-2").addClass("p-1 px-2");
+	// date input header
 	$("form").find("span.p-1").removeClass("p-1");
+	// button
+	$("form").find("input.cursor-pointer").removeClass("mt-4").addClass("mt-1");
 };
 
 // function that displays the destination image and covid information
@@ -136,7 +143,7 @@ var showCOVIDInfo = function () {
 	sectionEL.append(countryImg, COVIDEl);
 
 	// append section to the beginning of the main element
-	$("main").prepend(sectionEL);
+	$(".previous").before(sectionEL);
 };
 
 // function that shows flights matching the criteria
@@ -234,7 +241,7 @@ var showFlights = function () {
 		flightsEl.append(tripEl);
 	}
 
-	$("main").prepend(flightsEl);
+	$(".previous").before(flightsEl);
 
 	// add rotated corners to the bottom-most flight information
 	$(".trip").last().addClass("rounded-b-xl");
@@ -244,12 +251,15 @@ var showFlights = function () {
 };
 
 // function that shows the detailed information for the first flight element
-var showDetails = function () {
-	console.log("time to show some of the details!");
+var showDetails = function (id) {
+	// remove existing flights list section, if it already exists
+	if ($(".details")) {
+		$(".details").remove();
+	}
 
 	// create a section element to hold the detailed flight information
 	var detailedEl = $("<section>").addClass(
-		"m-3 flex flex-col border border-gray-400 rounded-xl shadow-md w-10/12"
+		"details m-3 flex flex-col border border-gray-400 rounded-xl shadow-md w-10/12"
 	);
 
 	// create a img element for the picture of the location
@@ -275,19 +285,19 @@ var showDetails = function () {
 
 	var departureAirline = $("<h4>")
 		.addClass("pt-3 text-xl")
-		.text(`${flightsArray[0].departAirline}`);
+		.text(`${flightsArray[id].departAirline}`);
 
 	var departureDetails = $("<div>").addClass(
-		"my-2 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
+		"mb-5 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
 	);
 
 	var departureLeaveTime = $("<div>")
 		.addClass("text-lg font-semibold")
-		.text(`${flightsArray[0].departLeave}`);
+		.text(`${flightsArray[id].departLeave}`);
 
 	var departureLeaveAirport = $("<div>")
 		.addClass("text-md")
-		.text(`${flightsArray[0].departAirport}`);
+		.text(`${flightsArray[id].departAirport}`);
 
 	var travelTime = $("<div>")
 		.addClass("py-2 text-md text-gray-700")
@@ -295,11 +305,11 @@ var showDetails = function () {
 
 	var departureArriveTime = $("<div>")
 		.addClass("text-lg font-semibold")
-		.text(`${flightsArray[0].departArrive}`);
+		.text(`${flightsArray[id].departArrive}`);
 
 	var departureArriveAirport = $("<div>")
 		.addClass("text-md")
-		.text(`${flightsArray[0].returnAirport}`);
+		.text(`${flightsArray[id].returnAirport}`);
 
 	departureDetails.append(
 		departureLeaveTime,
@@ -326,19 +336,19 @@ var showDetails = function () {
 
 	var returnAirline = $("<h4>")
 		.addClass("pt-3 text-xl")
-		.text(`${flightsArray[0].returnAirline}`);
+		.text(`${flightsArray[id].returnAirline}`);
 
 	var returnDetails = $("<div>").addClass(
-		"my-2 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
+		"mb-5 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
 	);
 
 	var returnLeaveTime = $("<div>")
 		.addClass("text-lg font-semibold")
-		.text(`${flightsArray[0].returnLeave}`);
+		.text(`${flightsArray[id].returnLeave}`);
 
 	var returnLeaveAirport = $("<div>")
 		.addClass("text-md")
-		.text(`${flightsArray[0].returnAirport}`);
+		.text(`${flightsArray[id].returnAirport}`);
 
 	var returnTravelTime = $("<div>")
 		.addClass("py-2 text-md text-gray-700")
@@ -346,11 +356,11 @@ var showDetails = function () {
 
 	var returnArriveTime = $("<div>")
 		.addClass("text-lg font-semibold")
-		.text(`${flightsArray[0].returnArrive}`);
+		.text(`${flightsArray[id].returnArrive}`);
 
 	var returnArriveAirport = $("<div>")
 		.addClass("text-md")
-		.text(`${flightsArray[0].departAirport}`);
+		.text(`${flightsArray[id].departAirport}`);
 
 	returnDetails.append(
 		returnLeaveTime,
@@ -369,7 +379,7 @@ var showDetails = function () {
 	detailedEl.append(destinationImg, departReturnEl);
 
 	// prepend section element to the main element
-	$("main").prepend(detailedEl);
+	$(".previous").before(detailedEl);
 };
 
 // ----- event listeners -----
@@ -382,14 +392,14 @@ $("#search-submit").on("click", function (event) {
 	// change the header configuration to the smaller version
 	shrinkHeader();
 
-	// show detailed flight results for the first flight option
-	showDetails();
+	// display the destination image and covid information
+	showCOVIDInfo();
 
 	// show flight results based on the search criteria
 	showFlights();
 
-	// display the destination image and covid information
-	showCOVIDInfo();
+	// show detailed flight results for the first flight option
+	showDetails(0);
 
 	// listen for the click on one of the flight options once they are rendered
 	$(".trip").click(function () {
@@ -397,5 +407,6 @@ $("#search-submit").on("click", function (event) {
 		var id = $(this).attr("id");
 
 		// populate the detailed information div with the information from the corresponding flight
+		showDetails(id);
 	});
 });

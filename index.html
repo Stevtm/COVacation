@@ -30,32 +30,33 @@
 			<!-- form that holds all user search filters -->
 			<form class="py-4 flex flex-col items-center">
 				<!-- inputs that capture the departure and arrival locations -->
-				<div class="m-1 flex rounded-xl shadow-md w-8/12">
-					<span
-						class="p-4 inline-flex items-center px-3 rounded-l-xl border border-r-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
-						><i class="fas fa-plane-departure"></i
-					></span>
-					<input
-						name="depart-from"
-						id="depart-from"
-						type="text"
-						placeholder="Where from?"
-						class="pl-2 border border-gray-400 rounded-r-xl w-10/12"
-					/>
-				</div>
-				<i class="fas fa-virus"></i>
-				<div class="m-1 flex rounded-xl shadow-md w-8/12">
-					<input
-						name="arrive-to"
-						id="arrive-to"
-						type="text"
-						placeholder="Where to?"
-						class="pl-2 border border-gray-400 rounded-l-xl w-10/12"
-					/>
-					<span
-						class="p-4 inline-flex items-center px-3 rounded-r-xl border border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
-						><i class="fas fa-plane-arrival"></i
-					></span>
+				<div class="flex flex-col items-center w-full sm:flex-row">
+					<div class="m-1 flex rounded-xl shadow-md w-8/12 sm:rounded-r-none">
+						<span
+							class="p-4 flex flex-col items-center px-3 rounded-l-xl border border-r-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
+							><i class="fas fa-plane-departure"></i
+						></span>
+						<input
+							name="depart-from"
+							id="depart-from"
+							type="text"
+							placeholder="Where from?"
+							class="pl-2 border border-gray-400 rounded-r-xl w-10/12 sm:rounded-r-none"
+						/>
+					</div>
+					<div class="m-1 flex rounded-xl shadow-md w-8/12 sm:rounded-l-none">
+						<input
+							name="arrive-to"
+							id="arrive-to"
+							type="text"
+							placeholder="Where to?"
+							class="pl-2 border border-gray-400 rounded-l-xl w-10/12 sm:rounded-l-none"
+						/>
+						<span
+							class="p-4 flex flex-col items-center px-3 rounded-r-xl border border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
+							><i class="fas fa-plane-arrival"></i
+						></span>
+					</div>
 				</div>
 				<!-- inputs that capture the travel dates -->
 				<div class="m-3 rounded-xl flex flex-row w-10/12 shadow-md">
@@ -95,7 +96,7 @@
 		</header>
 		<main class="flex flex-col items-center">
 			<!-- div that holds the previous searches -->
-			<section class="p-4 flex flex-col items-center w-10/12">
+			<section class="previous p-4 flex flex-col items-center w-10/12">
 				<h2 class="mb-4 text-2xl font-semibold">Your Previous Searches:</h2>
 				<!-- there are placeholder previous searches that are hardcoded - to be replaced by dynamic data -->
 				<!-- we'll need to add event listeners on these divs to repeat the search -->
