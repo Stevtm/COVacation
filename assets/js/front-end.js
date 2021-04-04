@@ -33,7 +33,34 @@ var flightsArray = [
 		returnAirport: "YVR",
 		price: 350,
 	},
+	{
+		departAirline: "Air Canada",
+		departLeave: "11:00 AM",
+		departArrive: "1:00 PM",
+		departAirport: "YYZ",
+		returnAirline: "Air Canada",
+		returnLeave: "1:00 PM",
+		returnArrive: "8:30 PM",
+		returnAirport: "YVR",
+		price: 350,
+	},
+	{
+		departAirline: "West Jet",
+		departLeave: "9:00 AM",
+		departArrive: "11:00 AM",
+		departAirport: "YYZ",
+		returnAirline: "Air Canada",
+		returnLeave: "11:00 AM",
+		returnArrive: "6:30 PM",
+		returnAirport: "YVR",
+		price: 500,
+	},
 ];
+
+// create a div to hold both the trip list card and the details card
+var tripListDetailsEl = $("<div>").addClass(
+	"flex flex-col items-center w-full md:flex-row md:justify-center md:items-start"
+);
 
 // ----- functions that change the front-end styling -----
 
@@ -53,7 +80,7 @@ var shrinkHeader = function () {
 
 	// slightly reduce the size of the form elements
 	// form itself
-	$("form").removeClass("py-4").addClass("py-2");
+	$("form").removeClass("py-4").addClass("py-2 lg:flex-row");
 	// icon
 	$("form").find("span.p-4").removeClass("p-4").addClass("p-3");
 	// date input
@@ -61,7 +88,10 @@ var shrinkHeader = function () {
 	// date input header
 	$("form").find("span.p-1").removeClass("p-1");
 	// button
-	$("form").find("input.cursor-pointer").removeClass("mt-4").addClass("mt-1");
+	$("form")
+		.find("input.cursor-pointer")
+		.removeClass("mt-4")
+		.addClass("mt-1 lg:ml-6");
 };
 
 // function that displays the destination image and covid information
@@ -73,20 +103,26 @@ var showCOVIDInfo = function () {
 
 	// create a section element to hold the card
 	var sectionEL = $("<section>").addClass(
-		"COVID m-3 border border-gray-400 rounded-xl shadow-md w-10/12"
+		"COVID m-3 flex flex-col border border-gray-400 rounded-xl shadow-md w-10/12 md:flex-row md:w-11/12"
 	);
 
 	// create an image element to hold the destination country image
 	var countryImg = $("<div>")
-		.addClass("w-full h-40 bg-cover bg-center rounded-t-xl")
+		.addClass(
+			"w-full h-40 bg-cover bg-center rounded-t-xl md:rounded-l-xl md:rounded-r-none md:h-64 md:border-r md:border-gray-400"
+		)
 		.css("background-image", "url(assets/images/canada-img.jpeg)");
 
 	// create an element to hold the COVID information
-	var COVIDEl = $("<div>").addClass("w-full rounded-b-lg w-10/12");
+	var COVIDEl = $("<div>").addClass(
+		"w-full rounded-b-lg w-10/12 md:rounded-tr-xl"
+	);
 
 	// create and append children elements for the COVID information card
 	var COVIDTitle = $("<h2>")
-		.addClass("pt-2 text-3xl font-semibold text-center text-red-600 bg-red-50")
+		.addClass(
+			"pt-2 text-3xl font-semibold text-center text-red-600 bg-red-50 md:rounded-tr-xl"
+		)
 		.text("COVID-19 Update");
 
 	var location = $("<h3>")
@@ -155,7 +191,7 @@ var showFlights = function () {
 
 	// create a section element to hold all of the flight results
 	var flightsEl = $("<section>").addClass(
-		"flights m-3 border border-gray-400 rounded-xl shadow-md w-10/12"
+		"flights m-3 border border-gray-400 rounded-xl shadow-md w-10/12 md:w-5/12"
 	);
 
 	// create a title for the section
@@ -241,13 +277,7 @@ var showFlights = function () {
 		flightsEl.append(tripEl);
 	}
 
-	$(".previous").before(flightsEl);
-
-	// add rotated corners to the bottom-most flight information
-	$(".trip").last().addClass("rounded-b-xl");
-
-	// highlight the first flight option (the detailed information for this flight will be shown at load)
-	$(".trip").first().removeClass("hover:bg-gray-100").addClass("bg-red-100");
+	tripListDetailsEl.append(flightsEl);
 };
 
 // function that shows the detailed information for the first flight element
@@ -257,14 +287,23 @@ var showDetails = function (id) {
 		$(".details").remove();
 	}
 
+	// remove highlight from previous elements
+	$(".flights")
+		.find(".trip")
+		.removeClass("bg-red-100")
+		.addClass("hover:bg-gray-100");
+
+	// highlight the clicked element in red
+	$(`[id="${id}"]`).removeClass("hover:bg-gray-100").addClass("bg-red-100");
+
 	// create a section element to hold the detailed flight information
 	var detailedEl = $("<section>").addClass(
-		"details m-3 flex flex-col border border-gray-400 rounded-xl shadow-md w-10/12"
+		"details pb-2 m-3 flex flex-col border border-gray-400 rounded-xl shadow-md w-10/12 md:w-5/12"
 	);
 
 	// create a img element for the picture of the location
 	var destinationImg = $("<div>")
-		.addClass("w-full h-40 bg-cover bg-center rounded-t-xl")
+		.addClass("w-full h-44 bg-cover bg-center rounded-t-xl lg:h-36")
 		.css("background-image", "url(assets/images/van-img.jpeg)");
 
 	// create a div to hold departure and return flight details
@@ -378,8 +417,10 @@ var showDetails = function (id) {
 	// append image and details to the section element
 	detailedEl.append(destinationImg, departReturnEl);
 
+	tripListDetailsEl.append(detailedEl);
+
 	// prepend section element to the main element
-	$(".previous").before(detailedEl);
+	$(".previous").before(tripListDetailsEl);
 };
 
 // ----- event listeners -----
@@ -400,6 +441,9 @@ $("#search-submit").on("click", function (event) {
 
 	// show detailed flight results for the first flight option
 	showDetails(0);
+
+	// highlight the first flight option (the detailed information for this flight will be shown at load)
+	$(".trip").first().removeClass("hover:bg-gray-100").addClass("bg-red-100");
 
 	// listen for the click on one of the flight options once they are rendered
 	$(".trip").click(function () {

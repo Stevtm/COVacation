@@ -3,6 +3,11 @@
 	margin: 0;
 }
 
+main {
+	max-width: 1280px;
+	margin: auto;
+}
+
 /* card shadow styles */
 
 .shadow-md {
