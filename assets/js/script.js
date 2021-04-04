@@ -242,4 +242,5 @@ function showFlightInfo() {
 /* To-Do
 	comment everything
 	check for empty return date and change api call accordingly
+	check for one-way or return flight and add a new fetch request at the bottom of the stack accordingly
 */
