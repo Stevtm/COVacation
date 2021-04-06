@@ -222,13 +222,13 @@ var showFlights = function () {
 			)
 			.attr("id", i);
 
-		detailsEl = $("<div>").addClass("flex flex-col w-8/12");
+		detailsEl = $("<div>").addClass("flex flex-row justify-between w-9/12");
 
 		// create a div and children for the departure flight times
 		departEl = $("<div>").addClass("flex flex-row w-full");
 		departIcon = $("<span>")
 			.addClass(
-				"p-3 flex flex-col justify-center items-center text-gray-700 text-sm w-2/12"
+				"p-3 flex flex-row justify-center items-center text-gray-700 text-sm w-2/12"
 			)
 			.html("<i class='fas fa-plane-departure'></i>");
 		departTimeEl = $("<div>").addClass("flex flex-col items-center w-10/12");
@@ -248,7 +248,7 @@ var showFlights = function () {
 		returnEl = $("<div>").addClass("flex flex-row w-full");
 		returnIcon = $("<span>")
 			.addClass(
-				"p-2 flex flex-col justify-center items-center px-3 text-gray-700 text-sm w-2/12"
+				"p-2 flex flex-row justify-center items-center px-3 text-gray-700 text-sm w-2/12"
 			)
 			.html("<i class='fas fa-plane-departure fa-flip-horizontal'></i>");
 		returnTimeEl = $("<div>").addClass("flex flex-col items-center w-10/12");
