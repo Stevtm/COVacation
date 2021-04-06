@@ -8,6 +8,7 @@ function showFlightInfo() {
 	var departDate = $("#depart-date").val().trim();
 	var returnDate = $("#return-date").val().trim();
 
+	console.log(departDate + "			" + returnDate);
 	// dates must be in YYYY-MM-DD format.
 
 	fetch(
@@ -116,6 +117,11 @@ function showFlightInfo() {
 															console.log(
 																`New Cases: ${covidData[0].NewCases}	Total Cases: ${covidData[0].TotalCases}		Active cases: ${covidData[0].ActiveCases}		Recovery Proportion: ${covidData[0].Recovery_Proporation}%`
 															);
+
+															$("#covidEl-new-cases").text(covidData[0].NewCases);
+															$("#covidEl-total-cases").text(covidData[0].TotalCases);
+															$("#covidEl-active-cases").text(covidData[0].ActiveCases);
+															$("#covidEl-recovery-proportion").text(covidData[0].Recovery_Proporation);
 
 															fetch(
 																`https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly,alerts&appid=3e8aa64128a8b382a871af127be1e2d0&units=imperial`

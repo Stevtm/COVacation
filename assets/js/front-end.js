@@ -62,8 +62,8 @@ var tripListDetailsEl = $("<div>").addClass(
 	"flex flex-col items-center w-full md:flex-row md:justify-center md:items-start"
 );
 
-$("input#depart-date").datepicker({ minDate: 0});
-$("input#return-date").datepicker({ minDate: 0});
+$("input#depart-date").datepicker({ minDate: 0, dateFormat: "yy-mm-dd"});
+$("input#return-date").datepicker({ minDate: 0, dateFormat: "yy-mm-dd"});
 
 // ----- functions that change the front-end styling -----
 
@@ -128,11 +128,17 @@ var showCOVIDInfo = function () {
 		)
 		.text("COVID-19 Update");
 
+		// changing this to show Destination country dynamically
+	// var location = $("<h3>")
+	// 	.addClass(
+	// 		"pb-2 text-2xl text-center font-semibold text-gray-700 border-b border-gray-400 bg-red-50"
+	// 	)
+	// 	.text("Canada");
 	var location = $("<h3>")
-		.addClass(
-			"pb-2 text-2xl text-center font-semibold text-gray-700 border-b border-gray-400 bg-red-50"
-		)
-		.text("Canada");
+	.addClass(
+		"pb-2 text-2xl text-center font-semibold text-gray-700 border-b border-gray-400 bg-red-50"
+	)
+	.attr("id", "covidEl-destination-country");
 
 	var COVIDInfo = $("<div>").addClass("py-2 flex flex-row flex-wrap");
 
@@ -140,7 +146,10 @@ var showCOVIDInfo = function () {
 	var newCasesEl = $("<div>").addClass("p-2 text-center w-6/12");
 
 	var newCasesTitle = $("<h4>").addClass("text-red-600").text("New Cases");
-	var newCasesVal = $("<p>").addClass("font-semibold text-2xl").text("6,098");
+
+	// changing to dynamic value
+	// var newCasesVal = $("<p>").addClass("font-semibold text-2xl").text("6,098");
+	var newCasesVal = $("<p>").addClass("font-semibold text-2xl").attr("id", "covidEl-new-cases");
 
 	newCasesEl.append(newCasesTitle, newCasesVal);
 
@@ -148,17 +157,23 @@ var showCOVIDInfo = function () {
 	var totalCasesEl = $("<div>").addClass("p-2 text-center w-6/12");
 
 	var totalCasesTitle = $("<h4>").addClass("text-red-600").text("Total Cases");
+	
+	// changing to dynamic
+	// var totalCasesVal = $("<p>")
+	// 	.addClass("font-semibold text-2xl")
+	// 	.text("996,702");
+
 	var totalCasesVal = $("<p>")
 		.addClass("font-semibold text-2xl")
-		.text("996,702");
+		.attr("id", "covidEl-total-cases");
 
 	totalCasesEl.append(totalCasesTitle, totalCasesVal);
 
 	// new vaccinations
 	var newVaxEl = $("<div>").addClass("p-2 text-center w-6/12");
 
-	var newVaxTitle = $("<h4>").addClass("text-red-600").text("New Vaccinations");
-	var newVaxVal = $("<p>").addClass("font-semibold text-2xl").text("126,257");
+	var newVaxTitle = $("<h4>").addClass("text-red-600").text("Active Cases");
+	var newVaxVal = $("<p>").addClass("font-semibold text-2xl").attr("id", "covidEl-active-cases");
 
 	newVaxEl.append(newVaxTitle, newVaxVal);
 
@@ -167,10 +182,10 @@ var showCOVIDInfo = function () {
 
 	var totalVaxTitle = $("<h4>")
 		.addClass("text-red-600")
-		.text("Total Vaccinations");
+		.text("Recovery Proportion");
 	var totalVaxVal = $("<p>")
 		.addClass("font-semibold text-2xl")
-		.text("8,468,570");
+		.attr("id", "covidEl-recovery-proportion");
 
 	totalVaxEl.append(totalVaxTitle, totalVaxVal);
 
