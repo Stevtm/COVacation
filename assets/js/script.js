@@ -121,7 +121,7 @@ function showFlightInfo() {
 															$("#covidEl-new-cases").text(covidData[0].NewCases);
 															$("#covidEl-total-cases").text(covidData[0].TotalCases);
 															$("#covidEl-active-cases").text(covidData[0].ActiveCases);
-															$("#covidEl-recovery-proportion").text(covidData[0].Recovery_Proporation);
+															$("#covidEl-recovery-proportion").text(covidData[0].Recovery_Proporation + "%");
 
 															fetch(
 																`https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly,alerts&appid=3e8aa64128a8b382a871af127be1e2d0&units=imperial`
