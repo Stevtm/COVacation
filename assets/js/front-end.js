@@ -67,12 +67,12 @@ var tripListDetailsEl = $("<div>").addClass(
 // function that reduces the size of the header once the "submit" button is first clicked
 var shrinkHeader = function () {
 	// resize the site name and put it in the corner
-	$("h1")
-		.removeClass("pt-12 text-center text-5xl")
-		.addClass("text-2xl text-left");
+	// $("h1")
+	// 	.removeClass("pt-12 text-center text-5xl")
+	// 	.addClass("text-2xl text-left");
 
-	// remove the slogan from the page
-	$("header").find("p").remove();
+	// // remove the slogan from the page
+	// $("header").find("p").remove();
 
 	// reduce the height of the header so that it sits at the top of the page
 	$("header").addClass("transition-all");
