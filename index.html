@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>COVacation - Travel Smarter.</title>
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+			integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="assets/css/style.css" />
+	</head>
+	<body>
+		<!-- header with site name in the left hand corner and search in compressed position -->
+		<header
+			class="p-4 pt-40 border-b-4 border-gray-700 flex flex-col items-center bg-red-50"
+		>
+			<img src="assets/images/logo2.svg" style="width: 600px" />
+			<!-- <h1 class="pt-12 font-semibold text-center text-5xl w-full">
+				<span class="text-red-600">COV</span>acation
+			</h1> -->
+			<!-- <p class="text-2xl text-gray-700">Travel Smarter.</p> -->
+			<!-- form that holds all user search filters -->
+			<form class="py-4 flex flex-col items-center">
+				<!-- inputs that capture the departure and arrival locations -->
+				<div class="flex flex-col items-center w-full sm:flex-row">
+					<div class="m-1 flex rounded-xl shadow-md w-8/12 sm:rounded-r-none">
+						<span
+							class="p-4 flex flex-col items-center px-3 rounded-l-xl border border-r-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
+							><i class="fas fa-plane-departure"></i
+						></span>
+						<input
+							name="depart-from"
+							id="depart-from"
+							type="text"
+							placeholder="Where from?"
+							class="pl-2 border border-gray-400 rounded-r-xl w-10/12 sm:rounded-r-none"
+						/>
+					</div>
+					<div class="m-1 flex rounded-xl shadow-md w-8/12 sm:rounded-l-none">
+						<input
+							name="arrive-to"
+							id="arrive-to"
+							type="text"
+							placeholder="Where to?"
+							class="pl-2 border border-gray-400 rounded-l-xl w-10/12 sm:rounded-l-none"
+						/>
+						<span
+							class="p-4 flex flex-col items-center px-3 rounded-r-xl border border-l-0 border-gray-400 bg-red-200 text-gray-700 text-sm w-2/12"
+							><i class="fas fa-plane-arrival"></i
+						></span>
+					</div>
+				</div>
+				<!-- inputs that capture the travel dates -->
+				<div class="m-3 rounded-xl flex flex-row w-10/12 shadow-md">
+					<div class="flex flex-col w-6/12">
+						<span
+							class="p-1 inline-flex items-center px-2 rounded-tl-xl border border-b-0 border-gray-400 bg-red-200 text-gray-700 text-md"
+							>Depart</span
+						>
+						<input
+							name="depart-date"
+							id="depart-date"
+							type="text"
+							placeholder="Sun, Apr 18"
+							class="p-2 border border-gray-400 rounded-bl-xl"
+						/>
+					</div>
+					<div class="flex flex-col w-6/12">
+						<span
+							class="p-1 inline-flex items-center px-2 rounded-tr-xl border border-b-0 border-l-0 border-gray-400 bg-red-200 text-gray-700 text-md"
+							>Return</span
+						>
+						<input
+							name="return-date"
+							id="return-date"
+							type="text"
+							placeholder="Wed, Apr 21"
+							class="p-2 border border-gray-400 border-l-0 rounded-br-xl"
+						/>
+					</div>
+				</div>
+				<input
+					type="submit"
+					id="search-submit"
+					class="px-3 py-2 mt-4 rounded-lg text-white shadow-md bg-red-600 hover:bg-red-700 cursor-pointer"
+				/>
+			</form>
+		</header>
+		<main class="flex flex-col items-center">
+			<!-- div that holds the previous searches -->
+			<section class="previous p-4 flex flex-col items-center w-10/12">
+				<h2 class="mb-4 text-2xl font-semibold">Your Previous Searches:</h2>
+				<!-- there are placeholder previous searches that are hardcoded - to be replaced by dynamic data -->
+				<!-- we'll need to add event listeners on these divs to repeat the search -->
+				<div class="flex flex-row justify-center flex-wrap w-full">
+					<div
+						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer sm:w-5/12 lg:w-3/12"
+					>
+						<h3 class="py-2 text-lg text-center border-b border-gray-400">
+							Toronto <i class="fas fa-arrow-right"></i> Vancouver
+						</h3>
+						<div
+							class="py-2 flex flex-row items-center rounded-b-xl text-center bg-white w-full"
+						>
+							<div class="w-6/12 border-r border-gray-400">
+								<p>Sun, Apr 18</p>
+							</div>
+							<div class="w-6/12">
+								<p>Wed, Apr 21</p>
+							</div>
+						</div>
+					</div>
+					<div
+						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer sm:w-5/12 lg:w-3/12"
+					>
+						<h3 class="py-2 text-lg text-center border-b border-gray-400">
+							Toronto <i class="fas fa-arrow-right"></i> Vancouver
+						</h3>
+						<div
+							class="py-2 flex flex-row items-center rounded-b-xl text-center bg-white w-full"
+						>
+							<div class="w-6/12 border-r border-gray-400">
+								<p>Sun, Apr 18</p>
+							</div>
+							<div class="w-6/12">
+								<p>Wed, Apr 21</p>
+							</div>
+						</div>
+					</div>
+					<div
+						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer sm:w-5/12 lg:w-3/12"
+					>
+						<h3 class="py-2 text-lg text-center border-b border-gray-400">
+							Toronto <i class="fas fa-arrow-right"></i> Vancouver
+						</h3>
+						<div
+							class="py-2 flex flex-row items-center rounded-b-xl text-center bg-white w-full"
+						>
+							<div class="w-6/12 border-r border-gray-400">
+								<p>Sun, Apr 18</p>
+							</div>
+							<div class="w-6/12">
+								<p>Wed, Apr 21</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- load libraries and js code -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
+		<script src="assets/js/front-end.js"></script>
+		<script src="assets/js/script.js"></script>
+	</body>
+</html>
