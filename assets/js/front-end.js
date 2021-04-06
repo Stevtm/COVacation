@@ -62,6 +62,9 @@ var tripListDetailsEl = $("<div>").addClass(
 	"flex flex-col items-center w-full md:flex-row md:justify-center md:items-start"
 );
 
+$("input#depart-date").datepicker({ minDate: 0});
+$("input#return-date").datepicker({ minDate: 0});
+
 // ----- functions that change the front-end styling -----
 
 // function that reduces the size of the header once the "submit" button is first clicked

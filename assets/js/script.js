@@ -150,11 +150,13 @@ function showFlightInfo() {
 			console.error(err);
 		});
 }
-$( function() {
-	$( "#depart-date" ).datepicker({ minDate: 0,});
-	$( "#return-date" ).datepicker({ minDate: 0, });
-	$
-  } );
+
+
+
+
+
+
+
 
 // using opencage geocoding api.  https://opencagedata.com/api#request
 // fix covid api function to use this before fetch request
