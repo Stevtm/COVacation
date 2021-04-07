@@ -117,6 +117,7 @@ function showFlightInfo() {
 																`New Cases: ${covidData[0].NewCases}	Total Cases: ${covidData[0].TotalCases}		Active cases: ${covidData[0].ActiveCases}		Recovery Proportion: ${covidData[0].Recovery_Proporation}%`
 															);
 
+															$("#covidEl-destination-country").text(covidData[0].Country);
 															$("#covidEl-new-cases").text(covidData[0].NewCases);
 															$("#covidEl-total-cases").text(covidData[0].TotalCases);
 															$("#covidEl-active-cases").text(covidData[0].ActiveCases);
