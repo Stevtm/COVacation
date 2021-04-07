@@ -8,6 +8,11 @@ function showFlightInfo() {
 	var returnDate = $("#return-date").val().trim();
 
 	console.log(departDate + "			" + returnDate);
+
+	var departureMonth = moment(departDate).format("YYYY-MM");
+	var returnMonth = moment(returnDate).format("YYYY-MM");
+
+	$("#display-flight-dates").text(`${moment(departureMonth).format("MMM YYYY")} to ${moment(returnMonth).format("MMM YYYY")}`);
 	// dates must be in YYYY-MM-DD format.
 
 	fetch(
@@ -49,7 +54,7 @@ function showFlightInfo() {
 
 							// get flight quotes
 							fetch(
-								`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/CA/CAD/en-US/${departurePlace}/${arrivalPlace}/${departDate}?inboundpartialdate=${returnDate}`,
+								`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/CA/CAD/en-US/${departurePlace}/${arrivalPlace}/${departureMonth}?inboundpartialdate=${returnMonth}`,
 								{
 									method: "GET",
 									headers: {
@@ -64,6 +69,9 @@ function showFlightInfo() {
 									response.json().then((data) => {
 										// flight quote data
 										console.log(data);
+
+										var flightInfoArray = []
+
 										var flightCarrier = data.Carriers[0].Name; // flight carrier name
 										var currencyCode = data.Currencies[0].Code; // currency code, API is currently set to CAD
 										var departureAirportName = data.Places[1].Name; // airport name for departure, example YYZ-sky for Toronto
@@ -74,6 +82,59 @@ function showFlightInfo() {
 										console.log(
 											`Flight Carrier: ${flightCarrier}  Departure: ${departureAirportName}  Arrival: ${arrivalAirportName}  Quote: $${flightQuotePrice} ${currencyCode}`
 										);
+
+
+										var indexLength = 0;
+										if(data.Quotes.length < 5) {
+											indexLength = data.Quotes.length;
+											console.log(`Index Length is ${indexLength}`);
+											console.log(data.Quotes.length);
+										}
+										else if (data.Quotes.length >= 5){
+											indexLength = 10;
+											console.log(`Index Length is ${indexLength}`);
+											console.log(data.Quotes.length);
+										}
+
+										var carriers = data.Carriers;
+										console.log(carriers);
+
+									
+										for(let a = 0; a < indexLength; a++){
+											var departTimeVal = data.Quotes[a].OutboundLeg.DepartureDate;
+											var separatedTime = departTimeVal.split("T");
+
+											var flightInfoObj = {
+												flightDate: separatedTime[0],
+												flightCarrierID: data.Quotes[a].OutboundLeg.CarrierIds[0],
+												flightOriginPlace: data.Places[1].Name,
+												flightOriginStation: departurePlace,
+												flightDestinationPlace: data.Places[0].Name,
+												flightDestinationStation: arrivalPlace,
+												flightPrice: data.Quotes[a].MinPrice,
+												flightCurrency: data.Currencies[0].Symbol,
+												flightIsDirect: data.Quotes[a].Direct
+											}
+
+											flightInfoArray.push(flightInfoObj);
+										}
+
+										for(let b = 0; b < flightInfoArray.length; b++) {
+											
+											$(`#departTime${b}`).html(`<p><b>${moment(flightInfoArray[b].flightDate).format("DD MMM, YYYY")}</b></p>`);
+											$(`#price${b}`).text(`${flightInfoArray[b].flightCurrency}${flightInfoArray[b].flightPrice}`);
+
+											if(flightInfoArray[b].flightIsDirect) {
+												$(`#departDirect${b}`).text("Direct Flight");
+											}
+											else {
+												$(`#departDirect${b}`).text("Non-Direct Flight");
+											}
+										}
+
+
+										console.log(flightInfoArray);
+
 
 										// fetch requests for covid and temperature info at destination
 										fetch(
