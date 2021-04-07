@@ -1,7 +1,6 @@
-$("#search-submit").on("click", showFlightInfo);
+var searchHistory = localStorage.getItem("searchHistory");
 
 // // function to get a list of airports at both origin and destination (separate calls for each)
-
 function showFlightInfo() {
 	var departFrom = $("#depart-from").val().trim();
 	var arriveTo = $("#arrive-to").val().trim();
@@ -156,3 +155,10 @@ function showFlightInfo() {
 			console.error(err);
 		});
 }
+
+
+$("#search-submit").on("click", showFlightInfo);
+
+/*
+	Test Browse Dates Inbound api url
+*/
