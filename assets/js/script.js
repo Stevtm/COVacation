@@ -146,6 +146,7 @@ function showFlightInfo(searchOrigin, searchDestination) {
                       };
 
                       flightInfoArray.push(flightInfoObj);
+                    }
 
                     for (let b = 0; b < flightInfoArray.length; b++) {
                       $(`#departTime${b}`).html(
