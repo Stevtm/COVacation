@@ -235,7 +235,7 @@ var showFlights = function () {
 
   // create a row for each search result (need to decide how many we will show) - i is the counter
   // var i = -1;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     // increase the counter
     // i++;
 
@@ -487,10 +487,13 @@ function showSearchHistory() {
       "m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer sm:w-5/12 lg:w-3/12"
     );
     var headerEl = $("<h3>")
-      .addClass("py-2 text-lg text-center border-b border-gray-400")
+      .addClass(
+        "py-2 text-lg text-center border-b border-gray-400 previous-search-el"
+      )
       .html(
         `${searchHistory[k].origin} <i class="fas fa-arrow-right"></i> ${searchHistory[k].destination}`
-      );
+      )
+      .attr("id", `searchHistoryBtn${k}`);
 
     divContainer.append(headerEl);
     $(".previous").append(divContainer);
@@ -554,4 +557,12 @@ $("#search-submit").on("click", function (event) {
   });
 });
 
-$(document).ready(showSearchHistory);
+$(document).ready(function () {
+  showSearchHistory();
+  console.log($("[id^=searchHistoryBtn"));
+  $("[id^=searchHistoryBtn").click(function () {
+    console.log($(this).text());
+    var testArr = $(this).text().split(" ");
+    console.log(testArr);
+  });
+});

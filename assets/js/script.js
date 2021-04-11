@@ -103,12 +103,12 @@ function showFlightInfo(searchOrigin, searchDestination) {
                     );
 
                     var indexLength = 0;
-                    if (data.Quotes.length < 5) {
+                    if (data.Quotes.length < 6) {
                       indexLength = data.Quotes.length;
                       console.log(`Index Length is ${indexLength}`);
                       console.log(data.Quotes.length);
-                    } else if (data.Quotes.length >= 5) {
-                      indexLength = 5;
+                    } else if (data.Quotes.length >= 6) {
+                      indexLength = 6;
                       console.log(`Index Length is ${indexLength}`);
                       console.log(`Number of Quotes: ${data.Quotes.length}`);
                     }
