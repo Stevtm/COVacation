@@ -347,101 +347,121 @@ var showDetails = function (id) {
     .addClass(
       "py-3 border-b border-t border-gray-400 text-lg text-center font-semibold bg-red-100 w-full"
     )
-    .html(
-      "<i class='fas fa-plane-departure'></i>&nbsp DEPARTING FLIGHT - Apr 18"
-    );
+    // .html(
+    //   "<i class='fas fa-plane-departure'></i>&nbsp DEPARTING FLIGHT - Apr 18"
+    // )
+    .attr("id", "departureTitle");
 
   var departureAirline = $("<h4>")
     .addClass("pt-3 text-xl")
-    .text(`${flightsArray[id].departAirline}`);
+    // .text(`${flightsArray[id].departAirline}`)
+    .attr("id", "departureAirline");
 
   var departureDetails = $("<div>").addClass(
     "mb-5 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
   );
 
-  var departureLeaveTime = $("<div>")
-    .addClass("text-lg font-semibold")
-    .text(`${flightsArray[id].departLeave}`);
+  //   var departureLeaveTime = $("<div>")
+  //     .addClass("text-lg font-semibold")
+  //     .text(`${flightsArray[id].departLeave}`);
 
   var departureLeaveAirport = $("<div>")
-    .addClass("text-md")
-    .text(`${flightsArray[id].departAirport}`);
-
-  var travelTime = $("<div>")
-    .addClass("py-2 text-md text-gray-700")
-    .text("Travel time: 5 hr 00 min");
-
-  var departureArriveTime = $("<div>")
+    // .addClass("text-md")
     .addClass("text-lg font-semibold")
-    .text(`${flightsArray[id].departArrive}`);
+    // .text(`${flightsArray[id].departAirport}`)
+    .attr("id", "departureLeaveAirport");
+
+  var departureLeaveStation = $("<div>")
+    .addClass("text-md")
+    .attr("id", "departureLeaveStation");
+
+  var spacer = $("<div>").html(`|`);
+
+  //   var travelTime = $("<div>")
+  //     .addClass("py-2 text-md text-gray-700")
+  //     .text("Travel time: 5 hr 00 min");
+
+  //   var departureArriveTime = $("<div>")
+  //     .addClass("text-lg font-semibold")
+  //     .text(`${flightsArray[id].departArrive}`);
 
   var departureArriveAirport = $("<div>")
+    // .addClass("text-md")
+    .addClass("text-lg font-semibold")
+    // .text(`${flightsArray[id].returnAirport}`)
+    .attr("id", "departureArriveAirport");
+
+  var departureArriveStation = $("<div>")
     .addClass("text-md")
-    .text(`${flightsArray[id].returnAirport}`);
+    .attr("id", "departureArriveStation");
 
   departureDetails.append(
-    departureLeaveTime,
+    // departureLeaveTime,
     departureLeaveAirport,
-    travelTime,
-    departureArriveTime,
-    departureArriveAirport
+    departureLeaveStation,
+    spacer,
+    // travelTime,
+    // departureArriveTime,
+    departureArriveAirport,
+    departureArriveStation
   );
 
   departureEl.append(departureTitle, departureAirline, departureDetails);
 
   // create a return flight div and corresponding children
-  var returnEl = $("<div>").addClass(
-    "border-gray-400 flex flex-col items-center w-full"
-  );
+  //   var returnEl = $("<div>").addClass(
+  //     "border-gray-400 flex flex-col items-center w-full"
+  //   );
 
-  var returnTitle = $("<h3>")
-    .addClass(
-      "py-3 border-b border-t border-gray-400 text-lg text-center font-semibold bg-red-100 w-full"
-    )
-    .html(
-      `<i class='fas fa-plane-departure fa-flip-horizontal'></i>&nbsp RETURNING FLIGHT - Apr 21`
-    );
+  //   var returnTitle = $("<h3>")
+  //     .addClass(
+  //       "py-3 border-b border-t border-gray-400 text-lg text-center font-semibold bg-red-100 w-full"
+  //     )
+  //     .html(
+  //       `<i class='fas fa-plane-departure fa-flip-horizontal'></i>&nbsp RETURNING FLIGHT - Apr 21`
+  //     );
 
-  var returnAirline = $("<h4>")
-    .addClass("pt-3 text-xl")
-    .text(`${flightsArray[id].returnAirline}`);
+  //   var returnAirline = $("<h4>")
+  //     .addClass("pt-3 text-xl")
+  //     .text(`${flightsArray[id].returnAirline}`);
 
-  var returnDetails = $("<div>").addClass(
-    "mb-5 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
-  );
+  //   var returnDetails = $("<div>").addClass(
+  //     "mb-5 px-4 w-10/12 flex flex-col border-l-2 border-dashed border-black"
+  //   );
 
-  var returnLeaveTime = $("<div>")
-    .addClass("text-lg font-semibold")
-    .text(`${flightsArray[id].returnLeave}`);
+  //   var returnLeaveTime = $("<div>")
+  //     .addClass("text-lg font-semibold")
+  //     .text(`${flightsArray[id].returnLeave}`);
 
-  var returnLeaveAirport = $("<div>")
-    .addClass("text-md")
-    .text(`${flightsArray[id].returnAirport}`);
+  //   var returnLeaveAirport = $("<div>")
+  //     .addClass("text-md")
+  //     .text(`${flightsArray[id].returnAirport}`);
 
-  var returnTravelTime = $("<div>")
-    .addClass("py-2 text-md text-gray-700")
-    .text("Travel time: 4 hr 30 min");
+  //   var returnTravelTime = $("<div>")
+  //     .addClass("py-2 text-md text-gray-700")
+  //     .text("Travel time: 4 hr 30 min");
 
-  var returnArriveTime = $("<div>")
-    .addClass("text-lg font-semibold")
-    .text(`${flightsArray[id].returnArrive}`);
+  //   var returnArriveTime = $("<div>")
+  //     .addClass("text-lg font-semibold")
+  //     .text(`${flightsArray[id].returnArrive}`);
 
-  var returnArriveAirport = $("<div>")
-    .addClass("text-md")
-    .text(`${flightsArray[id].departAirport}`);
+  //   var returnArriveAirport = $("<div>")
+  //     .addClass("text-md")
+  //     .text(`${flightsArray[id].departAirport}`);
 
-  returnDetails.append(
-    returnLeaveTime,
-    returnLeaveAirport,
-    returnTravelTime,
-    returnArriveTime,
-    returnArriveAirport
-  );
+  //   returnDetails.append(
+  //     returnLeaveTime,
+  //     returnLeaveAirport,
+  //     returnTravelTime,
+  //     returnArriveTime,
+  //     returnArriveAirport
+  //   );
 
-  returnEl.append(returnTitle, returnAirline, returnDetails);
+  //   returnEl.append(returnTitle, returnAirline, returnDetails);
 
   // append departure and return divs
-  departReturnEl.append(departureEl, returnEl);
+  //   departReturnEl.append(departureEl, returnEl);
+  departReturnEl.append(departureEl);
 
   // append image and details to the section element
   detailedEl.append(destinationImg, departReturnEl);
@@ -494,7 +514,7 @@ $("#search-submit").on("click", function (event) {
   showFlights();
 
   // show detailed flight results for the first flight option
-  showDetails(0);
+  showDetails();
 
   // highlight the first flight option (the detailed information for this flight will be shown at load)
   $(".trip").first().removeClass("hover:bg-gray-100").addClass("bg-red-100");
@@ -504,8 +524,33 @@ $("#search-submit").on("click", function (event) {
     // get the corresponding id from the clicked flight
     var id = $(this).attr("id");
 
+    //   console.log($(this).children(".text-green-600").text());
     // populate the detailed information div with the information from the corresponding flight
-    showDetails(id);
+    // showDetails(id);
+
+    $(".flights")
+      .find(".trip")
+      .removeClass("bg-red-100")
+      .addClass("hover:bg-gray-100");
+
+    // highlight the clicked element in red
+    $(`[id="${id}"]`).removeClass("hover:bg-gray-100").addClass("bg-red-100");
+
+    $("#departureTitle").html(
+      `<i class='fas fa-plane-departure'></i>&nbsp DEPARTING FLIGHT - ${moment(
+        flightInfoArray[id].flightDate
+      ).format("MMM DD")}`
+    );
+
+    $("#departureAirline").text(flightInfoArray[id].flightCarrierID);
+    $("#departureLeaveAirport").text(flightInfoArray[id].flightOriginPlace);
+    $("#departureLeaveStation").text(flightInfoArray[id].flightOriginStation);
+    $("#departureArriveAirport").text(
+      flightInfoArray[id].flightDestinationPlace
+    );
+    $("#departureArriveStation").text(
+      flightInfoArray[id].flightDestinationStation
+    );
   });
 });
 

@@ -110,7 +110,7 @@ function showFlightInfo(searchOrigin, searchDestination) {
                     } else if (data.Quotes.length >= 5) {
                       indexLength = 5;
                       console.log(`Index Length is ${indexLength}`);
-                      console.log(data.Quotes.length);
+                      console.log(`Number of Quotes: ${data.Quotes.length}`);
                     }
 
                     $("#trips-heading").text(
@@ -128,7 +128,14 @@ function showFlightInfo(searchOrigin, searchDestination) {
                       var flightInfoObj = {
                         flightDate: separatedTime[0],
                         flightCarrierID:
-                          data.Quotes[a].OutboundLeg.CarrierIds[0],
+                          //   data.Quotes[a].OutboundLeg.CarrierIds[0],
+                          carriers[
+                            carriers.findIndex(
+                              (element) =>
+                                element.CarrierId ===
+                                data.Quotes[a].OutboundLeg.CarrierIds[0]
+                            )
+                          ].Name,
                         flightOriginPlace: data.Places[1].Name,
                         flightOriginStation: departurePlace,
                         flightDestinationPlace: data.Places[0].Name,
@@ -139,7 +146,6 @@ function showFlightInfo(searchOrigin, searchDestination) {
                       };
 
                       flightInfoArray.push(flightInfoObj);
-                    }
 
                     for (let b = 0; b < flightInfoArray.length; b++) {
                       $(`#departTime${b}`).html(
@@ -253,6 +259,20 @@ function showFlightInfo(searchOrigin, searchDestination) {
 }
 
 $("#search-submit").on("click", showFlightInfo);
+
+$(".trip").click(function () {
+  var id = $(this).attr("id");
+  console.log(id);
+  $("#departureTitle").html(
+    `<i class='fas fa-plane-departure'></i>&nbsp DEPARTING FLIGHT - ${moment(
+      flightInfoArray[id].flightDate
+    ).format("MMM DD")}`
+  );
+
+  $("#departureAirline").text(flightInfoArray[id].flightCarrierID);
+  $("#departureLeaveAirport").text(flightInfoArray[id].flightOriginPlace);
+  $("#departureArriveAirport").text(flightInfoArray[id].flightDestinationPlace);
+});
 
 /*
 	Test Browse Dates Inbound api url
