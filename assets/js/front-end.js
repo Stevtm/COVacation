@@ -221,7 +221,8 @@ var showFlights = function () {
     .addClass(
       "pt-4 rounded-t-xl text-3xl font-semibold text-center bg-gray-200"
     )
-    .text("Trips from Toronto to Vancouver");
+    // .text("Trips from Toronto to Vancouver")
+    .attr("id", "trips-heading");
   var flightsDate = $("<h3>")
     .addClass(
       "pb-4 text-2xl text-center font-semibold text-gray-700 bg-gray-200"

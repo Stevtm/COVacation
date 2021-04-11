@@ -113,6 +113,10 @@ function showFlightInfo(searchOrigin, searchDestination) {
                       console.log(data.Quotes.length);
                     }
 
+                    $("#trips-heading").text(
+                      `Trips from ${departFrom} to ${arriveTo}`
+                    );
+
                     var carriers = data.Carriers;
                     console.log(carriers);
 
