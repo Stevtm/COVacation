@@ -99,11 +99,11 @@
 		</header>
 		<main class="flex flex-col items-center">
 			<!-- div that holds the previous searches -->
-			<section class="previous p-4 flex flex-col items-center w-10/12">
-				<!-- <h2 class="mb-4 text-2xl font-semibold">Your Previous Searches:</h2> -->
+			<section class="previous p-4 flex flex-col items-center w-10/12 hidden">
+				<h2 class="mb-4 text-2xl font-semibold">Your Previous Searches:</h2>
 				<!-- there are placeholder previous searches that are hardcoded - to be replaced by dynamic data -->
 				<!-- we'll need to add event listeners on these divs to repeat the search -->
-				<div class="flex flex-row justify-center flex-wrap w-full">
+				<div class="flex flex-row justify-center flex-wrap w-full" id="previous-searches-container">
 					<!-- <div
 						class="m-2 border border-gray-400 rounded-xl shadow-md bg-red-300 hover:bg-red-400 w-full cursor-pointer sm:w-5/12 lg:w-3/12"
 					>
