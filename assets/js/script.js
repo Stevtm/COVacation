@@ -108,7 +108,7 @@ function showFlightInfo(searchOrigin, searchDestination) {
                       console.log(`Index Length is ${indexLength}`);
                       console.log(data.Quotes.length);
                     } else if (data.Quotes.length >= 5) {
-                      indexLength = 10;
+                      indexLength = 5;
                       console.log(`Index Length is ${indexLength}`);
                       console.log(data.Quotes.length);
                     }
